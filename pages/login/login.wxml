@@ -1,0 +1,14 @@
+<van-tabs active="{{ active }}" bind:change="onChange">
+  <view class="card">
+    <van-tab title="登录">
+      <van-cell-group>
+        <van-field value="{{ value }}" label="学号" placeholder="请输入学号" border="{{ true }}" bindchange="onStudentId" />
+      </van-cell-group>
+      <van-cell-group>
+        <van-field value="{{ password }}" type="password" label="密码" placeholder="请输入密码" border="{{ false }}" bindchange="onPassword" />
+      </van-cell-group>
+    </van-tab>
+  </view>
+
+  <van-tab title="注册">注册</van-tab>
+</van-tabs>
