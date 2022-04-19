@@ -1,0 +1,7 @@
+<view class="pt20">
+  <van-grid column-num='2' gutter='10'>
+    <van-grid-item icon="friends-o"  text="个人信息" />
+    <van-grid-item icon="todo-list-o" text="招聘信息" />
+    <van-grid-item icon="user-o" text="学生列表" />
+  </van-grid>
+</view>

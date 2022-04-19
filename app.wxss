@@ -1,21 +1,28 @@
-/**app.wxss**/
-.container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 200rpx 0;
-  box-sizing: border-box;
-}
-
 page {
   background: #f7f8fa;
 }
 
-.card{
+.card {
   background: #FFFFFF;
   margin: 30rpx;
   padding: 20rpx;
   border-radius: 20rpx;
+}
+
+.mgat {
+  margin: 0 auto;
+}
+
+.d-c-c {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mt20 {
+  margin: 20rpx;
+}
+
+.pt20{
+  padding-top: 20rpx;
 }
