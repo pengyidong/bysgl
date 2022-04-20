@@ -3,5 +3,6 @@
     <van-grid-item icon="friends-o"  text="个人信息" />
     <van-grid-item icon="todo-list-o" text="招聘信息" />
     <van-grid-item icon="user-o" text="学生列表" />
+    <van-grid-item icon="revoke" text="退出登录" />
   </van-grid>
 </view>

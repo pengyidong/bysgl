@@ -1,0 +1,13 @@
+<view class="mt20">
+  <van-cell-group inset>
+    <van-cell wx:for="{{info}}" title="{{item.title}}" value="{{item.value}}" border="{{ false }}" wx:key="index" />
+  </van-cell-group>
+</view>
+
+<view class="pbxb fixed-bottom">
+  <van-button color="linear-gradient(to right, #4bb0ff, #6149f6)" size="large" icon="records">编辑信息</van-button>
+</view>
+
+<!-- <view class="pbxb fixed-bottom">
+  <van-button color="linear-gradient(to right, #4bb0ff, #6149f6)" size="large" icon="records">成绩录入</van-button>
+</view> -->

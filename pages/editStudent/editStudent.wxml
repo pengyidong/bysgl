@@ -1,0 +1,7 @@
+<van-cell-group>
+  <van-field placeholder="请输入" border="{{ false }}" bind:change="onChange" wx:for="{{info}}" value="{{item.value}}" label="{{item.title}}" />
+</van-cell-group>
+
+<view class="pbxb fixed-bottom">
+  <van-button color="linear-gradient(to right, #4bb0ff, #6149f6)" size="large" icon="records">保存信息</van-button>
+</view>

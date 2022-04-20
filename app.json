@@ -3,7 +3,9 @@
     "pages/index/index",
     "pages/login/login",
     "pages/info/info",
-    "pages/userDetail/userDetail"
+    "pages/studentDetail/studentDetail",
+    "pages/recruitmentList/recruitmentList",
+    "pages/editStudent/editStudent"
   ],
   "window": {
     "backgroundTextStyle": "light",

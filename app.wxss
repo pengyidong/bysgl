@@ -23,6 +23,18 @@ page {
   margin: 20rpx;
 }
 
-.pt20{
+.pt20 {
   padding-top: 20rpx;
+}
+
+.fixed-bottom {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+
+.pbxb {
+  padding-bottom: calc(env(safe-area-inset-bottom)) !important;
 }
