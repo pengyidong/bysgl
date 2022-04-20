@@ -1,4 +1,4 @@
-<view class="mt20">
+<view class="m20">
   <van-cell-group inset>
     <van-cell wx:for="{{info}}" title="{{item.title}}" value="{{item.value}}" border="{{ false }}" wx:key="index" />
   </van-cell-group>

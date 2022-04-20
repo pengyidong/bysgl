@@ -1,2 +1,16 @@
-<!--pages/recruitmentList/recruitmentList.wxml-->
-<text>pages/recruitmentList/recruitmentList.wxml</text>
+<view>
+  <view class="card" wx:for="{{list}}">
+    <view class="d-b-c">
+      <view>{{item.position}}</view>
+      <view class="co-1989FA">{{item.salary}}</view>
+    </view>
+    <view class="d-b-c mt20">
+      <view>{{item.name}}</view>
+      <view>{{item.base}}</view>
+    </view>
+  </view>
+</view>
+
+<view class="pbxb fixed-bottom">
+  <van-button color="linear-gradient(to right, #4bb0ff, #6149f6)" size="large" icon="records">发布招聘</van-button>
+</view>

@@ -19,8 +19,8 @@
           "scene": null
         },
         {
-          "name": "pages/editStudent/editStudent",
-          "pathName": "pages/editStudent/editStudent",
+          "name": "pages/recruitmentDetail/recruitmentDetail",
+          "pathName": "pages/recruitmentDetail/recruitmentDetail",
           "query": "",
           "scene": null
         },

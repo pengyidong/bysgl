@@ -19,8 +19,11 @@ page {
   justify-content: center;
 }
 
-.mt20 {
+.m20 {
   margin: 20rpx;
+}
+.mt20 {
+  margin-top: 20rpx;
 }
 
 .pt20 {
@@ -34,7 +37,16 @@ page {
   width: 100%;
 }
 
+.co-1989FA {
+  color: #1989FA;
+}
 
 .pbxb {
   padding-bottom: calc(env(safe-area-inset-bottom)) !important;
+}
+
+.d-b-c {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
