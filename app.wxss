@@ -50,3 +50,11 @@ page {
   justify-content: space-between;
   align-items: center;
 }
+
+.wbf50{
+  width: 50%;
+}
+
+.f24{
+  font-size: 24rpx;
+}

@@ -1,4 +1,0 @@
-<!--index.wxml-->
-<view class="container">
-  <van-count-down time="{{ time }}" />
-</view>

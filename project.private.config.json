@@ -19,14 +19,8 @@
           "scene": null
         },
         {
-          "name": "pages/recruitmentDetail/recruitmentDetail",
-          "pathName": "pages/recruitmentDetail/recruitmentDetail",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "",
-          "pathName": "pages/userDetail/userDetail",
+          "name": "pages/studentList/studentList",
+          "pathName": "pages/studentList/studentList",
           "query": "",
           "scene": null
         }

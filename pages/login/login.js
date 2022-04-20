@@ -2,7 +2,7 @@ Page({
   data: {
     active: 0,
     radio: '1',
-    columns: ['杭州', '宁波', '温州', '嘉兴', '湖州'],
+    columns: ['高金丽', '赵四', '刘能', '谢广坤'],
     show: false,
   },
   onStudentId(event) {
