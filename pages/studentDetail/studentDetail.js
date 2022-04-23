@@ -6,7 +6,7 @@ Page({
    */
   data: {
     info:[
-      {title:'姓名',value:"邱宇"},
+      {title:'姓名',value:"彭奕东"},
       {title:'指导老师',value:"高金丽"},
       {title:'学号',value:"2019666"},
       {title:'手机号',value:"13257079395"},

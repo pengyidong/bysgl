@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "@vant/weapp": "^1.10.2",
-    "miniprogram-sm-crypto": "^0.3.7"
+    "miniprogram-sm-crypto": "^0.3.7",
+    "wx-server-sdk": "*"
   }
 }
