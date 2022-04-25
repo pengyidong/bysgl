@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/login/login",
     "pages/info/info",
+    "pages/login/login",
     "pages/studentDetail/studentDetail",
     "pages/recruitmentList/recruitmentList",
     "pages/recruitmentDetail/recruitmentDetail",

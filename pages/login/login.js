@@ -18,7 +18,6 @@ Page({
     wx.cloud.callFunction({
       name: 'teacherList',
     }).then(res => {
-      console.log(res)
       let columns = []
       res.result.data.forEach(item => {
         columns.push(item.name)
@@ -91,10 +90,7 @@ Page({
     });
   },
   register() {
-    // RegMobile: '',
-    // RegPassword: '',
-    // columnsName: '请选择'
-    // regRadio
+    console.log(12312313)
     wx.cloud.callFunction({
       name: 'register',
       data: {
@@ -104,7 +100,17 @@ Page({
         instructor: this.data.columnsName
       }
     }).then(res => {
-
+      wx.showToast({
+        title: '注册成功',
+        duration: 2000
+      })
+      wx.setStorageSync('type', this.data.regRadio)
+      wx.setStorageSync('mobile', this.data.RegMobile)
+      setTimeout(() => {
+        wx.reLaunch({
+          url: '/pages/info/info',
+        })
+      }, 2000)
     })
   },
   onSubmit() {
