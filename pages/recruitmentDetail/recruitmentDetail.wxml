@@ -2,6 +2,10 @@
   <van-cell-group inset>
     <van-cell title="{{info.position}}" value="{{info.salary}}" border="{{ false }}" wx:key="index" label="{{info.base}}" />
   </van-cell-group>
+  <view class="card d-b-c f24">
+    <view>HR：{{info.contact}}</view>
+    <view bindtap="call">电话：{{info.mobile}}</view>
+  </view>
   <view class="card f24">
     <view>公司介绍</view>
     <rich-text nodes="{{info.info}}"></rich-text>
@@ -11,8 +15,7 @@
     <rich-text nodes="{{info.requirements}}"></rich-text>
   </view>
 </view>
-<view class="pbxb fixed-bottom d-b-c ">
-  <van-button class="wbf50" type="danger" size="large" icon="delete-o">删除</van-button>
-  <van-button class="wbf50" color="linear-gradient(to right, #4bb0ff, #6149f6)" size="large" icon="phone-o">联系HR</van-button>
-  <van-button class="wbf50" type="warning" size="large" icon="records">编辑</van-button>
+<view class="pbxb fixed-bottom d-b-c " wx:if="{{type=='students'}}">
+  <van-button class="wbf50" type="danger" bindtap="del" size="large" icon="delete-o">删除</van-button>
+  <van-button class="wbf50" type="warning" size="large" icon="records" bindtap="goto">编辑</van-button>
 </view>

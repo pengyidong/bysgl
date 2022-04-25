@@ -5,18 +5,93 @@ Page({
    * 页面的初始数据
    */
   data: {
-    info:[
-      {title:'姓名',value:"彭奕东"},
-      {title:'指导老师',value:"高金丽"},
-      {title:'学号',value:"2019666"},
-      {title:'手机号',value:"13257079395"},
-      {title:'班级',value:"软件一班"},
-      {title:'年龄',value:"25"},
-      {title:'身份证号',value:"360724199901120012"},
-      {title:'是否就业',value:"已就业"},
-      {title:'企业名称',value:"特种兵四人小组"},
-      {title:'社会信用代码',value:"9144030071526726XG"},
-      {title:'工作地址',value:"深圳企鹅大厦409"},
-    ]
+    info: [{
+        title: '姓名',
+        value: ""
+      },
+      {
+        title: '指导老师',
+        value: ""
+      },
+      {
+        title: '学号',
+        value: ""
+      },
+      {
+        title: '手机号',
+        value: ""
+      },
+      {
+        title: '班级',
+        value: ""
+      },
+      {
+        title: '年龄',
+        value: ""
+      },
+      {
+        title: '身份证号',
+        value: ""
+      },
+      {
+        title: '是否就业',
+        value: ""
+      },
+      {
+        title: '企业名称',
+        value: ""
+      },
+      {
+        title: '社会信用代码',
+        value: ""
+      },
+      {
+        title: '工作地址',
+        value: ""
+      },
+    ],
+    mobile: '',
+    type: ''
   },
+  onLoad() {
+    let mobile = wx.getStorageSync('mobile') || ''
+    let type = wx.getStorageSync('type') || ''
+    this.setData({
+      mobile,
+      type
+    })
+  },
+  onShow() {
+    this.getdata()
+  },
+  edit() {
+    wx.navigateTo({
+      url: '/pages/editStudent/editStudent',
+    })
+  },
+  getdata() {
+    wx.cloud.callFunction({
+      name: 'userDetail',
+      data: {
+        type: this.data.type,
+        mobile: this.data.mobile,
+      }
+    }).then(res => {
+      let userDetail = this.data.info
+      userDetail[0].value = res.result.data[0].name
+      userDetail[1].value = res.result.data[0].instructor
+      userDetail[2].value = res.result.data[0].studentId
+      userDetail[3].value = res.result.data[0].mobile
+      userDetail[4].value = res.result.data[0].class
+      userDetail[5].value = res.result.data[0].age
+      userDetail[6].value = res.result.data[0].IdNumber
+      userDetail[7].value = res.result.data[0].employment
+      userDetail[8].value = res.result.data[0].company
+      userDetail[9].value = res.result.data[0].companyCode
+      userDetail[10].value = res.result.data[0].address
+      this.setData({
+        info: userDetail
+      })
+    })
+  }
 })

@@ -90,7 +90,6 @@ Page({
     });
   },
   register() {
-    console.log(12312313)
     wx.cloud.callFunction({
       name: 'register',
       data: {

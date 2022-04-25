@@ -1,0 +1,14 @@
+<van-cell-group>
+  <van-field placeholder="请输入" border="{{ true }}" model:value="{{name}}" label="公司名称" />
+  <van-field placeholder="请输入" border="{{ true }}" value="{{position}}" label="招聘岗位" />
+  <van-field placeholder="请输入" border="{{ true }}" value="{{base}}" label="地址" />
+  <van-field placeholder="请输入" border="{{ true }}" value="{{contact}}" label="联系人" />
+  <van-field placeholder="请输入" border="{{ true }}" value="{{mobile}}" label="联系电话" />
+  <van-field placeholder="请输入" border="{{ true }}" value="{{salary}}" label="薪资" />
+  <van-field placeholder="请输入" border="{{ true }}" value="{{info}}" label="公司介绍" />
+  <van-field placeholder="请输入" border="{{ true }}" value="{{requirements}}" label="岗位要求" />
+</van-cell-group>
+
+<view class="pbxb fixed-bottom">
+  <van-button bindtap="edit" color="linear-gradient(to right, #4bb0ff, #6149f6)" size="large" icon="records">添加信息</van-button>
+</view>

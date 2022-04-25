@@ -5,18 +5,89 @@ Page({
    * 页面的初始数据
    */
   data: {
-    info:[
-      {title:'姓名',value:"邱宇"},
-      {title:'指导老师',value:"高金丽"},
-      {title:'学号',value:"2019666"},
-      {title:'手机号',value:"13257079395"},
-      {title:'班级',value:"软件一班"},
-      {title:'年龄',value:"25"},
-      {title:'身份证号',value:"360724199901120012"},
-      {title:'是否就业',value:"已就业"},
-      {title:'企业名称',value:"特种兵四人小组"},
-      {title:'社会信用代码',value:"9144030071526726XG"},
-      {title:'工作地址',value:"深圳企鹅大厦409"},
-    ]
+    mobile: '',
+    type: '',
+    id: '',
+    name: "",
+    instructor: "",
+    studentId: "",
+    mobile: "",
+    class: "",
+    age: "",
+    IdNumber: "",
+    employment: "",
+    company: "",
+    companyCode: "",
+    address: "",
   },
+  onLoad() {
+    let mobile = wx.getStorageSync('mobile') || ''
+    let type = wx.getStorageSync('type') || ''
+    this.setData({
+      mobile,
+      type
+    })
+    this.getdata()
+  },
+  getdata() {
+    console.log('this.data.type', this.data.type)
+    wx.cloud.callFunction({
+      name: 'userDetail',
+      data: {
+        type: this.data.type,
+        mobile: this.data.mobile,
+      }
+    }).then(res => {
+      this.setData({
+        id: res.result.data[0]._id,
+        name: res.result.data[0].name,
+        instructor: res.result.data[0].instructor,
+        studentId: res.result.data[0].studentId,
+        mobile: res.result.data[0].mobile,
+        class: res.result.data[0].class,
+        age: res.result.data[0].age,
+        IdNumber: res.result.data[0].IdNumber,
+        employment: res.result.data[0].employment,
+        company: res.result.data[0].company,
+        companyCode: res.result.data[0].companyCode,
+        address: res.result.data[0].address,
+      })
+    })
+  },
+  edit() {
+    let userDetail = {
+      name: this.data.name,
+      instructor: this.data.instructor,
+      studentId: this.data.studentId,
+      mobile: this.data.mobile,
+      class: this.data.class,
+      age: this.data.age,
+      IdNumber: this.data.IdNumber,
+      employment: this.data.employment,
+      company: this.data.company,
+      companyCode: this.data.companyCode,
+      address: this.data.address,
+    }
+    wx.cloud.callFunction({
+      name: 'userEdit',
+      data: {
+        type: this.data.type,
+        mobile: this.data.mobile,
+        userDetail,
+        id: this.data.id
+      }
+    }).then(res => {
+      if (res.result.stats.updated == 1) {
+        wx.showToast({
+          title: '更新成功',
+          duration: 2000,
+        })
+        setTimeout(() => {
+          wx.navigateBack({
+            delta: 1
+          })
+        }, 2000)
+      }
+    })
+  }
 })

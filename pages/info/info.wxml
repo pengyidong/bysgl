@@ -1,8 +1,8 @@
 <view class="pt20">
   <van-grid column-num='2' gutter='10'>
-    <van-grid-item icon="friends-o"  text="个人信息" />
-    <van-grid-item icon="todo-list-o" text="招聘信息" />
-    <van-grid-item icon="user-o" text="学生列表" />
-    <van-grid-item icon="revoke" text="退出登录" />
+    <van-grid-item icon="friends-o" text="个人信息" data-url="/pages/studentDetail/studentDetail" bindtap="goto" />
+    <van-grid-item icon="todo-list-o" text="招聘信息"  data-url="/pages/recruitmentList/recruitmentList"  bindtap="goto" />
+    <van-grid-item wx:if="{{type == 'teachers'}}"  data-url="/pages/studentList/studentList"  icon="user-o" text="学生列表" bindtap="goto" />
+    <van-grid-item icon="revoke" text="退出登录"  bindtap="logout"/>
   </van-grid>
 </view>

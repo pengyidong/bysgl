@@ -5,24 +5,37 @@ Page({
    * 页面的初始数据
    */
   data: {
-    list: [{
-        name: '变美日记',
-        salary: '10-15k',
-        base: '广州白云区',
-        position: '前端开发'
-      },
-      {
-        name: '腾讯',
-        salary: '10-15k',
-        base: '广州白云区',
-        position: '后端开发'
-      },
-      {
-        name: '阿里',
-        salary: '10-15k',
-        base: '广州白云区',
-        position: '微信开发'
-      },
-    ]
+    list: []
   },
+  onLoad() {
+    let mobile = wx.getStorageSync('mobile') || ''
+    let type = wx.getStorageSync('type') || ''
+    this.setData({
+      mobile,
+      type
+    })
+  },
+  onShow(){
+    this.getdata()
+  },
+  gotoAdd(){
+    wx.navigateTo({
+      url: `/pages/recruitmentAdd/recruitmentAdd`,
+    })
+  },
+  goto(e) {
+    wx.navigateTo({
+      url: `/pages/recruitmentDetail/recruitmentDetail?id=${e.currentTarget.dataset.id}`,
+    })
+  },
+  getdata() {
+    wx.cloud.callFunction({
+      name: 'recruimentList',
+    }).then(res => {
+      console.log('res', res)
+      this.setData({
+        list: res.result.data
+      })
+    })
+  }
 })
