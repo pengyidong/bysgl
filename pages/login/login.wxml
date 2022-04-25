@@ -1,5 +1,4 @@
 <van-tabs active="{{ active }}" bind:change="onChange">
-
   <van-tab title="登录">
     <view class="card">
       <van-cell-group>
@@ -7,6 +6,18 @@
       </van-cell-group>
       <van-cell-group>
         <van-field value="{{ password }}" type="password" label="密码" placeholder="请输入密码" bindchange="onPassword" />
+      </van-cell-group>
+      <van-cell-group>
+        <van-radio-group value="{{ loginRadio }}" bind:change="onRadioChange">
+          <van-cell-group>
+            <van-cell title="学生" clickable data-name="students" bind:click="onLoginClick">
+              <van-radio slot="right-icon" name="students" />
+            </van-cell>
+            <van-cell title="老师" clickable data-name="teachers" bind:click="onLoginClick">
+              <van-radio slot="right-icon" name="teachers" />
+            </van-cell>
+          </van-cell-group>
+        </van-radio-group>
       </van-cell-group>
       <view>
         <van-button class="m20 d-c-c" size="small" type="primary" bindtap="onSubmit" round>用户登录</van-button>
@@ -17,32 +28,32 @@
   <van-tab title="注册">
     <view class="card">
       <van-cell-group>
-        <van-field value="{{ value }}" label="手机号" placeholder="请输入手机号" border="{{ true }}" bindchange="onStudentId" />
+        <van-field value="{{ RegMobile }}" label="手机号" placeholder="请输入手机号" border="{{ true }}" bindchange="onRegMobile" />
       </van-cell-group>
       <van-cell-group>
-        <van-field value="{{ password }}" type="password" label="密码" placeholder="请输入密码" border="{{ false }}" bindchange="onPassword" />
+        <van-field value="{{ RegPassword }}" type="password" label="密码" placeholder="请输入密码" border="{{ false }}" bindchange="onRegPassword" />
       </van-cell-group>
       <van-cell-group>
-        <van-radio-group value="{{ radio }}" bind:change="onChange">
+        <van-radio-group value="{{ regRadio }}" bind:change="onRegRadio">
           <van-cell-group>
-            <van-cell title="学生" clickable data-name="1" bind:click="onClick">
-              <van-radio slot="right-icon" name="1" />
+            <van-cell title="学生" clickable data-name="students" bind:click="onRegClick">
+              <van-radio slot="right-icon" name="students" />
             </van-cell>
-            <van-cell title="老师" clickable data-name="2" bind:click="onClick">
-              <van-radio slot="right-icon" name="2" />
+            <van-cell title="老师" clickable data-name="teachers" bind:click="onRegClick">
+              <van-radio slot="right-icon" name="teachers" />
             </van-cell>
           </van-cell-group>
         </van-radio-group>
       </van-cell-group>
-      <van-cell-group>
-        <van-cell title="绑定老师" is-link bind:click="showPopup" value="高金丽" />
+      <van-cell-group wx:if="{{regRadio === 'students'}}">
+        <van-cell title="绑定老师" is-link bind:click="showPopup" value="{{columnsName}}" />
         <van-popup show="{{ show }}" bind:close="onClose" position="bottom">
           <van-picker columns="{{ columns }}" bind:change="pickerOnChange" />
         </van-popup>
 
       </van-cell-group>
       <view>
-        <van-button class="m20 d-c-c" size="small" type="primary" round>用户注册</van-button>
+        <van-button class="m20 d-c-c" size="small" type="primary" bindtap="register" round>用户注册</van-button>
       </view>
     </view>
   </van-tab>

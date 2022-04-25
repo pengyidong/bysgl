@@ -1,11 +1,32 @@
 Page({
   data: {
     active: 0,
-    radio: '1',
-    columns: ['高金丽', '赵四', '刘能', '谢广坤'],
+    loginRadio: 'students',
+    regRadio: 'students',
+    columns: [],
     show: false,
     mobile: '',
-    password: ''
+    password: '',
+    RegMobile: '',
+    RegPassword: '',
+    columnsName: '请选择'
+  },
+  onLoad() {
+    this.getList()
+  },
+  getList() {
+    wx.cloud.callFunction({
+      name: 'teacherList',
+    }).then(res => {
+      console.log(res)
+      let columns = []
+      res.result.data.forEach(item => {
+        columns.push(item.name)
+      });
+      this.setData({
+        columns
+      })
+    })
   },
   onStudentId(event) {
     this.setData({
@@ -17,9 +38,31 @@ Page({
       password: event.detail
     })
   },
-  onChange(event) {
+  onLoginClick(event) {
+    console.log(event)
     this.setData({
-      radio: event.detail,
+      loginRadio: event.target.dataset.name
+    })
+  },
+  onRegClick(event) {
+    console.log(event)
+    this.setData({
+      regRadio: event.target.dataset.name
+    })
+  },
+  onRegMobile(event) {
+    this.setData({
+      RegMobile: event.detail
+    })
+  },
+  onRegPassword(event) {
+    this.setData({
+      RegPassword: event.detail
+    })
+  },
+  onRegRadio(event) {
+    this.setData({
+      regRadio: event.detail,
     });
   },
   showPopup() {
@@ -34,11 +77,9 @@ Page({
     });
   },
   pickerOnChange(event) {
-    const {
-      picker,
-      value,
-      index
-    } = event.detail;
+    this.setData({
+      columnsName: event.detail.value
+    })
   },
 
   onClick(event) {
@@ -49,26 +90,50 @@ Page({
       radio: name,
     });
   },
-  onShow() {
+  register() {
+    // RegMobile: '',
+    // RegPassword: '',
+    // columnsName: '请选择'
+    // regRadio
     wx.cloud.callFunction({
-      name: 'login',
+      name: 'register',
       data: {
-        mobile: this.data.mobile,
-        password: this.data.password
+        mobile: this.data.RegMobile,
+        password: this.data.RegPassword,
+        name: this.data.regRadio,
+        instructor: this.data.columnsName
       }
-    }).then(res => [
-      console.log(res)
-    ])
+    }).then(res => {
+
+    })
   },
   onSubmit() {
     wx.cloud.callFunction({
       name: 'login',
       data: {
         mobile: this.data.mobile,
-        password: this.data.password
+        password: this.data.password,
+        name: this.data.loginRadio
       }
-    }).then(res => [
-      console.log(res)
-    ])
+    }).then(res => {
+      if (res.result.data.length === 1) {
+        wx.showToast({
+          title: '登录成功',
+          duration: 2000
+        })
+        wx.setStorageSync('type', this.data.loginRadio)
+        wx.setStorageSync('mobile', res.result.data[0].mobile)
+        setTimeout(() => {
+          wx.reLaunch({
+            url: '/pages/info/info',
+          })
+        }, 2000)
+      } else {
+        wx.showToast({
+          title: '账号或密码错误',
+          duration: 2000
+        })
+      }
+    })
   }
 });
