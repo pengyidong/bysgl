@@ -49,15 +49,26 @@ Page({
       radio: name,
     });
   },
+  onShow() {
+    wx.cloud.callFunction({
+      name: 'login',
+      data: {
+        mobile: this.data.mobile,
+        password: this.data.password
+      }
+    }).then(res => [
+      console.log(res)
+    ])
+  },
   onSubmit() {
-    const db = wx.cloud.database()
-
-    db.collection('students').where({
-      mobile: this.data.mobile,
-      password: this.data.password
-    }).get().then(res => {
-      // res.data 包含该记录的数据
-      console.log(res.data)
-    })
+    wx.cloud.callFunction({
+      name: 'login',
+      data: {
+        mobile: this.data.mobile,
+        password: this.data.password
+      }
+    }).then(res => [
+      console.log(res)
+    ])
   }
 });
