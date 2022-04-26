@@ -1,4 +1,4 @@
-<van-tabs active="{{ active }}" bind:change="onChange">
+<van-tabs active="{{ active }}">
   <van-tab title="登录">
     <view class="card">
       <van-cell-group>
@@ -34,6 +34,9 @@
         <van-field value="{{ RegPassword }}" type="password" label="密码" placeholder="请输入密码" border="{{ false }}" bindchange="onRegPassword" />
       </van-cell-group>
       <van-cell-group>
+        <van-field value="{{ name }}" label="姓名" placeholder="请输入姓名" border="{{ true }}" bindchange="onName" />
+      </van-cell-group>
+      <van-cell-group>
         <van-radio-group value="{{ regRadio }}" bind:change="onRegRadio">
           <van-cell-group>
             <van-cell title="学生" clickable data-name="students" bind:click="onRegClick">
@@ -47,8 +50,8 @@
       </van-cell-group>
       <van-cell-group wx:if="{{regRadio === 'students'}}">
         <van-cell title="绑定老师" is-link bind:click="showPopup" value="{{columnsName}}" />
-        <van-popup show="{{ show }}" bind:close="onClose" position="bottom">
-          <van-picker columns="{{ columns }}" bind:change="pickerOnChange" />
+        <van-popup show="{{ show }}" position="bottom" bind:close="onClose">
+          <van-picker show-toolbar columns="{{ columns }}" bind:cancel="onCancel" bind:confirm="onConfirm" value-key="name" />
         </van-popup>
 
       </van-cell-group>

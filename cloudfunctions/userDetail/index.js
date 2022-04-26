@@ -6,6 +6,6 @@ var db = cloud.database()
 // 云函数入口函数
 exports.main = async (event, context) => {
   return db.collection(event.type).where({
-    mobile: event.mobile
+    _id: event.id
   }).get()
 }

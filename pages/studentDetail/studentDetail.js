@@ -51,14 +51,17 @@ Page({
       },
     ],
     mobile: '',
-    type: ''
+    type: '',
+    id: ''
   },
-  onLoad() {
+  onLoad(e) {
     let mobile = wx.getStorageSync('mobile') || ''
-    let type = wx.getStorageSync('type') || ''
+    let type = e.type || wx.getStorageSync('type') || ''
+    let id = e.id || wx.getStorageSync('id') || ''
     this.setData({
       mobile,
-      type
+      type,
+      id
     })
   },
   onShow() {
@@ -75,6 +78,7 @@ Page({
       data: {
         type: this.data.type,
         mobile: this.data.mobile,
+        id: this.data.id
       }
     }).then(res => {
       let userDetail = this.data.info

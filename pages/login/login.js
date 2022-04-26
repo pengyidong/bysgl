@@ -9,10 +9,25 @@ Page({
     password: '',
     RegMobile: '',
     RegPassword: '',
-    columnsName: '请选择'
+    columnsName: '请选择',
+    instructorID: '',
+    username: ''
   },
   onLoad() {
     this.getList()
+  },
+
+  onConfirm(event) {
+    this.setData({
+      columnsName: event.detail.value.name,
+      instructorID: event.detail.value._id,
+      show: false
+    });
+  },
+  onCancel() {
+    this.setData({
+      show: false
+    });
   },
   getList() {
     wx.cloud.callFunction({
@@ -23,7 +38,7 @@ Page({
         columns.push(item.name)
       });
       this.setData({
-        columns
+        columns: res.result.data
       })
     })
   },
@@ -41,6 +56,11 @@ Page({
     console.log(event)
     this.setData({
       loginRadio: event.target.dataset.name
+    })
+  },
+  onName(event) {
+    this.setData({
+      username: event.detail
     })
   },
   onRegClick(event) {
@@ -90,26 +110,38 @@ Page({
     });
   },
   register() {
+    console.log('this.data.instructorID', this.data.instructorID)
     wx.cloud.callFunction({
       name: 'register',
       data: {
         mobile: this.data.RegMobile,
         password: this.data.RegPassword,
         name: this.data.regRadio,
-        instructor: this.data.columnsName
+        instructor: this.data.columnsName,
+        instructorID: this.data.instructorID,
+        username: this.data.username
       }
     }).then(res => {
-      wx.showToast({
-        title: '注册成功',
-        duration: 2000
-      })
-      wx.setStorageSync('type', this.data.regRadio)
-      wx.setStorageSync('mobile', this.data.RegMobile)
-      setTimeout(() => {
-        wx.reLaunch({
-          url: '/pages/info/info',
+      if (res.result.data.code == 200) {
+        wx.showToast({
+          title: res.result.data.msg,
+          duration: 2000,
+          icon: 'success'
         })
-      }, 2000)
+        wx.setStorageSync('type', this.data.regRadio)
+        wx.setStorageSync('mobile', this.data.RegMobile)
+        setTimeout(() => {
+          wx.reLaunch({
+            url: '/pages/info/info',
+          })
+        }, 2000)
+      } else {
+        wx.showToast({
+          title: res.result.data.msg,
+          duration: 2000,
+          icon: 'none'
+        })
+      }
     })
   },
   onSubmit() {
@@ -121,6 +153,7 @@ Page({
         name: this.data.loginRadio
       }
     }).then(res => {
+      console.log('res', res)
       if (res.result.data.length === 1) {
         wx.showToast({
           title: '登录成功',
@@ -128,6 +161,7 @@ Page({
         })
         wx.setStorageSync('type', this.data.loginRadio)
         wx.setStorageSync('mobile', res.result.data[0].mobile)
+        wx.setStorageSync('id', res.result.data[0]._id)
         setTimeout(() => {
           wx.reLaunch({
             url: '/pages/info/info',

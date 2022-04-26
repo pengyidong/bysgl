@@ -23,9 +23,11 @@ Page({
   onLoad() {
     let mobile = wx.getStorageSync('mobile') || ''
     let type = wx.getStorageSync('type') || ''
+    let id = wx.getStorageSync('id') || ''
     this.setData({
       mobile,
-      type
+      type,
+      id
     })
     this.getdata()
   },

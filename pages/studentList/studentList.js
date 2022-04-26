@@ -5,14 +5,32 @@ Page({
    * 页面的初始数据
    */
   data: {
-    list: [
-      {name:'彭奕东',id:"123"},
-      {name:'陈雯静',id:"123"},
-      {name:'陈朝晖',id:"123"},
-      {name:'余秋雨',id:"123"},
-      {name:'邱朋',id:"123"},
-      {name:'林任演',id:"123"},
-      {name:'赵四',id:"123"},
-    ]
+    list: [],
+    mobile: null
   },
+  onLoad() {
+    let mobile = wx.getStorageSync('mobile') || ''
+    this.setData({
+      mobile
+    })
+    this.getdata()
+  },
+  goto(event) {
+    wx.navigateTo({
+      url: `/pages/studentDetail/studentDetail?id=${event.target.dataset.id}&type=students`,
+    })
+  },
+  getdata() {
+    wx.cloud.callFunction({
+      name: 'studentList',
+      data: {
+        mobile: this.data.mobile,
+      }
+    }).then(res => {
+      console.log('res', res)
+      this.setData({
+        list: res.result.data.data[0].studentIds
+      })
+    })
+  }
 })

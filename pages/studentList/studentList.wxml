@@ -1,5 +1,5 @@
 <view class="mt20">
   <van-cell-group inset>
-    <van-cell wx:for="{{list}}" title="{{item.name}}" is-link />
+    <van-cell wx:for="{{list}}" title="{{item.name}}" is-link data-id="{{item.id}}" bindtap="goto"/>
   </van-cell-group>
 </view>
