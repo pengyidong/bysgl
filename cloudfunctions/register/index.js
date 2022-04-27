@@ -31,14 +31,24 @@ exports.main = async (event, context) => {
           msg: '已注册'
         }
       } else {
-        var result = await db.collection(event.name).add({
-          data: {
+        if (event.name == 'students') {
+          data = {
             mobile: event.mobile,
             password: event.password,
             instructor: event.instructor,
             instructorID: event.instructorID,
-            name: event.username
+            name: event.username,
           }
+        } else {
+          data = {
+            mobile: event.mobile,
+            password: event.password,
+            name: event.username,
+            studentIds: []
+          }
+        }
+        var result = await db.collection(event.name).add({
+          data
         })
         console.log('result', event.instructorID)
         if (result._id == undefined || result._id == "") {
@@ -48,17 +58,16 @@ exports.main = async (event, context) => {
           }
         } else {
           if (event.name == 'students') {
-            let bd = await db.collection(event.name).doc(event.instructorID).update({
+            const name = event.username
+            const id = result._id
+            let bd = await db.collection('teachers').doc(event.instructorID).update({
               data: {
                 studentIds: _.push({
-                  name: event.username,
-                  id: result._id
+                  name,
+                  id
                 })
               }
             });
-            console.log('event.username', event.username)
-            console.log('result._id', result._id)
-            console.log('bd', bd)
             if (bd.stats.updated == 0) {
               dataBack = {
                 code: 201,
@@ -67,13 +76,15 @@ exports.main = async (event, context) => {
             } else {
               dataBack = {
                 code: 200,
-                msg: '注册成功'
+                msg: '注册成功',
+                id: result._id
               }
             }
           } else {
             dataBack = {
               code: 200,
-              msg: '注册成功'
+              msg: '注册成功',
+              id: result._id
             }
           }
 

@@ -110,7 +110,6 @@ Page({
     });
   },
   register() {
-    console.log('this.data.instructorID', this.data.instructorID)
     wx.cloud.callFunction({
       name: 'register',
       data: {
@@ -122,6 +121,7 @@ Page({
         username: this.data.username
       }
     }).then(res => {
+      console.log('res', res)
       if (res.result.data.code == 200) {
         wx.showToast({
           title: res.result.data.msg,
@@ -130,6 +130,7 @@ Page({
         })
         wx.setStorageSync('type', this.data.regRadio)
         wx.setStorageSync('mobile', this.data.RegMobile)
+        wx.setStorageSync('id', this.data.id)
         setTimeout(() => {
           wx.reLaunch({
             url: '/pages/info/info',
