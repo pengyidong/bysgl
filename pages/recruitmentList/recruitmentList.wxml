@@ -11,6 +11,6 @@
   </view>
 </view>
 
-<view class="pbxb fixed-bottom" wx:if="{{type=='students'}}">
+<view class="pbxb fixed-bottom" wx:if="{{type=='teachers'}}">
   <van-button color="linear-gradient(to right, #4bb0ff, #6149f6)" size="large" bindtap="gotoAdd" icon="records">发布招聘</van-button>
 </view>

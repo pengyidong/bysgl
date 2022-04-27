@@ -15,7 +15,7 @@
     <rich-text nodes="{{info.requirements}}"></rich-text>
   </view>
 </view>
-<view class="pbxb fixed-bottom d-b-c " wx:if="{{type=='students'}}">
+<view class="pbxb fixed-bottom d-b-c " wx:if="{{type=='teachers'}}">
   <van-button class="wbf50" type="danger" bindtap="del" size="large" icon="delete-o">删除</van-button>
   <van-button class="wbf50" type="warning" size="large" icon="records" bindtap="goto">编辑</van-button>
 </view>
