@@ -20,6 +20,7 @@ Page({
   logout() {
     wx.removeStorageSync('type')
     wx.removeStorageSync('mobile')
+    wx.removeStorageSync('id')
     wx.reLaunch({
       url: '/pages/login/login',
     })

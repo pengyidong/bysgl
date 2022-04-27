@@ -32,12 +32,12 @@ Page({
     this.getdata()
   },
   getdata() {
-    console.log('this.data.type', this.data.type)
     wx.cloud.callFunction({
       name: 'userDetail',
       data: {
         type: this.data.type,
         mobile: this.data.mobile,
+        id: this.data.id
       }
     }).then(res => {
       this.setData({

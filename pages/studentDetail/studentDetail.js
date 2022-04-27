@@ -81,6 +81,7 @@ Page({
         id: this.data.id
       }
     }).then(res => {
+      console.log('res', res)
       let userDetail = this.data.info
       userDetail[0].value = res.result.data[0].name
       userDetail[1].value = res.result.data[0].instructor

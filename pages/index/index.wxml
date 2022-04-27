@@ -1,0 +1,3 @@
+<view class="d-c-c" style="margin-top: 40vh;">
+  <van-loading size="32px" vertical color="#1989fa" style="color:#1989fa">毕业生管理系统</van-loading>
+</view>

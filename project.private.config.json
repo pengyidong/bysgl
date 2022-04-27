@@ -41,6 +41,12 @@
           "pathName": "pages/recruitmentEdit/recruitmentEdit",
           "query": "id=058dfefe6266b2d1003117b27bdf36d9",
           "scene": null
+        },
+        {
+          "name": "pages/editStudent/editStudent",
+          "pathName": "pages/editStudent/editStudent",
+          "query": "",
+          "scene": null
         }
       ]
     }

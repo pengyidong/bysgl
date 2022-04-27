@@ -5,7 +5,7 @@
 </view>
 
 <view class="pbxb fixed-bottom">
-  <van-button color="linear-gradient(to right, #4bb0ff, #6149f6)" bindtap="edit" wx:if="{{type == 'students'}}" size="large" icon="records">编辑信息</van-button>
+  <van-button color="linear-gradient(to right, #4bb0ff, #6149f6)" bindtap="edit" size="large" icon="records">编辑信息</van-button>
 </view>
 
 <!-- <view class="pbxb fixed-bottom">
