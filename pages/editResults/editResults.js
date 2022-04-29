@@ -27,6 +27,11 @@ Page({
   },
   getInput(event) {
     console.log('event', event)
+    let list = this.data.list
+    list[event.currentTarget.dataset.index].achievement = event.detail
+    this.setData({
+      list
+    })
   },
   add() {
     let list = this.data.list
@@ -50,6 +55,17 @@ Page({
       this.setData({
         list: res.result.data.achievementList
       })
+    })
+  },
+  edit() {
+    wx.cloud.callFunction({
+      name: 'editresults',
+      data: {
+        id: this.data.id,
+        achievementList: this.data.list
+      }
+    }).then(res => {
+      console.log('res', res)
     })
   }
 })
