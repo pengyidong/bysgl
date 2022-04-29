@@ -25,6 +25,9 @@ Page({
       course: event.detail
     })
   },
+  getInput(event) {
+    console.log('event', event)
+  },
   add() {
     let list = this.data.list
     let obj = {

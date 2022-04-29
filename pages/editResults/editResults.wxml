@@ -1,5 +1,5 @@
 <van-cell-group>
-  <van-field wx:for="{{list}}" placeholder="请输入" border="{{ true }}" value="{{item.achievement}}" label="{{item.course}}">
+  <van-field wx:for="{{list}}" placeholder="请输入" border="{{ true }}" center clearable use-button-slot bindchange="getInput" data-index="{{index}}" value="{{item.achievement}}" label="{{item.course}}">
     <van-button slot="button" size="small" type="danger">
       删除
     </van-button>
