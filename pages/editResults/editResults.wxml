@@ -1,2 +1,19 @@
-<!--pages/editResults/editResults.wxml-->
-<text>pages/editResults/editResults.wxml</text>
+<van-cell-group>
+  <van-field wx:for="{{list}}" placeholder="请输入" border="{{ true }}" value="{{item.achievement}}" label="{{item.course}}">
+    <van-button slot="button" size="small" type="danger">
+      删除
+    </van-button>
+  </van-field>
+</van-cell-group>
+
+<van-cell-group>
+  <van-field placeholder="请输入学科" border="{{ true }}" value='{{course}}' bindchange="addCourse">
+    <van-button slot="button" size="small" type="info" bindtap="add">
+      新增学科
+    </van-button>
+  </van-field>
+</van-cell-group>
+
+<view class="pbxb fixed-bottom">
+  <van-button bindtap="edit" type="primary" size="large" icon="records">保存成绩</van-button>
+</view>

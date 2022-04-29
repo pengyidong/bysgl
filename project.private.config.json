@@ -47,6 +47,18 @@
           "pathName": "pages/editStudent/editStudent",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/studentDetail/studentDetail",
+          "pathName": "pages/studentDetail/studentDetail",
+          "query": "id=6f49505e6263c8f801d833ab056f3106",
+          "scene": null
+        },
+        {
+          "name": "pages/editResults/editResults",
+          "pathName": "pages/editResults/editResults",
+          "query": "id=6f49505e6263c8f801d833ab056f3106",
+          "scene": null
         }
       ]
     }

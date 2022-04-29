@@ -69,7 +69,7 @@ Page({
   },
   edit() {
     wx.navigateTo({
-      url: '/pages/editStudent/editStudent',
+      url: `/pages/editResults/editResults?id=${this.data.id}`,
     })
   },
   getdata() {

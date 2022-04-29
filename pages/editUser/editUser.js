@@ -1,66 +1,95 @@
-// pages/editUser/editUser.js
+// pages/userDetail/userDetail.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    mobile: '',
+    type: '',
+    id: '',
+    name: "",
+    instructor: "",
+    studentId: "",
+    mobile: "",
+    class: "",
+    age: "",
+    IdNumber: "",
+    employment: "",
+    company: "",
+    companyCode: "",
+    address: "",
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  onLoad() {
+    let mobile = wx.getStorageSync('mobile') || ''
+    let type = wx.getStorageSync('type') || ''
+    let id = wx.getStorageSync('id') || ''
+    this.setData({
+      mobile,
+      type,
+      id
+    })
+    this.getdata()
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  getdata() {
+    wx.cloud.callFunction({
+      name: 'userDetail',
+      data: {
+        type: this.data.type,
+        mobile: this.data.mobile,
+        id: this.data.id
+      }
+    }).then(res => {
+      this.setData({
+        id: res.result.data[0]._id,
+        name: res.result.data[0].name,
+        instructor: res.result.data[0].instructor,
+        studentId: res.result.data[0].studentId,
+        mobile: res.result.data[0].mobile,
+        class: res.result.data[0].class,
+        age: res.result.data[0].age,
+        IdNumber: res.result.data[0].IdNumber,
+        employment: res.result.data[0].employment,
+        company: res.result.data[0].company,
+        companyCode: res.result.data[0].companyCode,
+        address: res.result.data[0].address,
+      })
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  edit() {
+    let userDetail = {
+      name: this.data.name,
+      instructor: this.data.instructor,
+      studentId: this.data.studentId,
+      mobile: this.data.mobile,
+      class: this.data.class,
+      age: this.data.age,
+      IdNumber: this.data.IdNumber,
+      employment: this.data.employment,
+      company: this.data.company,
+      companyCode: this.data.companyCode,
+      address: this.data.address,
+    }
+    wx.cloud.callFunction({
+      name: 'userEdit',
+      data: {
+        type: this.data.type,
+        mobile: this.data.mobile,
+        userDetail,
+        id: this.data.id
+      }
+    }).then(res => {
+      if (res.result.stats.updated == 1) {
+        wx.showToast({
+          title: '更新成功',
+          duration: 2000,
+        })
+        setTimeout(() => {
+          wx.navigateBack({
+            delta: 1
+          })
+        }, 2000)
+      }
+    })
   }
 })

@@ -5,62 +5,48 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    id: '',
+    list: [],
+    course: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log('options', options.id)
+    this.setData({
+      id: options.id
+    })
+    this.getData()
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  addCourse(event) {
+    this.setData({
+      course: event.detail
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  add() {
+    let list = this.data.list
+    let obj = {
+      achievement: "",
+      course: this.data.course
+    }
+    list.push(obj)
+    this.setData({
+      list,
+      course: ''
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  getData() {
+    wx.cloud.callFunction({
+      name: 'getResults',
+      data: {
+        id: this.data.id
+      }
+    }).then(res => {
+      this.setData({
+        list: res.result.data.achievementList
+      })
+    })
   }
 })
