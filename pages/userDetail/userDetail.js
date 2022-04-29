@@ -56,8 +56,8 @@ Page({
   },
   onLoad(e) {
     let mobile = wx.getStorageSync('mobile') || ''
-    let type = 'students'
-    let id = e.id 
+    let type = e.type || wx.getStorageSync('type') || ''
+    let id = e.id || wx.getStorageSync('id') || ''
     this.setData({
       mobile,
       type,
@@ -69,7 +69,7 @@ Page({
   },
   edit() {
     wx.navigateTo({
-      url: '/pages/editStudent/editStudent',
+      url: '/pages/editUser/editUser',
     })
   },
   getdata() {

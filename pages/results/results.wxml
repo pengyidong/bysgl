@@ -1,0 +1,5 @@
+<view class="m20">
+  <van-cell-group inset>
+    <van-cell wx:for="{{achievementList}}" title="{{item.course}}" value="{{item.achievement}}" border="{{ true }}" wx:key="index" />
+  </van-cell-group>
+</view>

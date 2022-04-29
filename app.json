@@ -3,13 +3,16 @@
     "pages/index/index",
     "pages/login/login",
     "pages/info/info",
+    "pages/userDetail/userDetail",
     "pages/studentDetail/studentDetail",
     "pages/recruitmentList/recruitmentList",
     "pages/recruitmentDetail/recruitmentDetail",
-    "pages/editStudent/editStudent",
+    "pages/editUser/editUser",
     "pages/studentList/studentList",
     "pages/recruitmentEdit/recruitmentEdit",
-    "pages/recruitmentAdd/recruitmentAdd"
+    "pages/recruitmentAdd/recruitmentAdd",
+    "pages/results/results",
+    "pages/editResults/editResults"
   ],
   "window": {
     "backgroundTextStyle": "light",

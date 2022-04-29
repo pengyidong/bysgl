@@ -17,7 +17,7 @@ Page({
   },
   goto(event) {
     wx.navigateTo({
-      url: `/pages/studentDetail/studentDetail?id=${event.target.dataset.id}&type=students`,
+      url: `/pages/studentDetail/studentDetail?id=${event.target.dataset.id}`,
     })
   },
   getdata() {

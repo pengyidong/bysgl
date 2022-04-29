@@ -4,5 +4,5 @@
     "van-cell-group": "@vant/weapp/cell-group/index",
     "van-button": "@vant/weapp/button/index"
   },
-  "navigationBarTitleText": "学生信息"
+  "navigationBarTitleText": "成绩查询"
 }
