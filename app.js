@@ -2,10 +2,10 @@
 App({
   onLaunch() {
     wx.cloud.init({
-      env: 'cloud1-2gg6cn1pcef0de6b'
+      env: 'qyykf-7g2lmb4p5138ba04'
     })
 
   },
-  onShow() {
+  onShow() {  
   }
 })
