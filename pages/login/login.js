@@ -155,14 +155,14 @@ Page({
       }
     }).then(res => {
       console.log('res', res)
-      if (res.result.data.length === 1) {
+      if (res.code == 200) {
         wx.showToast({
           title: '登录成功',
           duration: 2000
         })
         wx.setStorageSync('type', this.data.loginRadio)
-        wx.setStorageSync('mobile', res.result.data[0].mobile)
-        wx.setStorageSync('id', res.result.data[0]._id)
+        wx.setStorageSync('mobile', res.mobile)
+        wx.setStorageSync('id', res._id)
         setTimeout(() => {
           wx.reLaunch({
             url: '/pages/info/info',
