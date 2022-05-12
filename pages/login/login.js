@@ -154,8 +154,7 @@ Page({
         name: this.data.loginRadio
       }
     }).then(res => {
-      console.log('res', res)
-      if (res.code == 200) {
+      if (res.result.dataBack.code == 200) {
         wx.showToast({
           title: '登录成功',
           duration: 2000

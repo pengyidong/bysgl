@@ -32,7 +32,6 @@ Page({
     wx.cloud.callFunction({
       name: 'recruimentList',
     }).then(res => {
-      console.log('res', res)
       this.setData({
         list: res.result.data
       })

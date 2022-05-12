@@ -46,7 +46,6 @@ Page({
               id
             }
           }).then(ressu => {
-            console.log('ressu', ressu)
             wx.navigateBack({
               delta: 1
             })
