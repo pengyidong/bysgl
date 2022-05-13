@@ -16,6 +16,7 @@ Page({
     requirements: ""
   },
   edit() {
+    // 获取用户输入信息
     let info = {
       name: this.data.name,
       position: this.data.position,

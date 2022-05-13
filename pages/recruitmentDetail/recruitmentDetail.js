@@ -33,11 +33,12 @@ Page({
       phoneNumber: mobile
     })
   },
+  // 删除招聘信息
   del() {
     let id = this.data.id
     wx.showModal({
       title: '删除',
-      content: '是否删除该职位？',
+      content: '是否删除该招聘信息？',
       success(res) {
         if (res.confirm) {
           wx.cloud.callFunction({
@@ -54,6 +55,7 @@ Page({
       }
     })
   },
+  // 获取招聘信息详情
   getData(id) {
     wx.cloud.callFunction({
       name: 'recruimentDetail',

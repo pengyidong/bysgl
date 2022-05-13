@@ -14,11 +14,36 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log('options', options.id)
+    // 页面加载时获取id
     this.setData({
       id: options.id
     })
     this.getData()
+  },
+  // 获取学生成绩数据
+  getData() {
+    wx.cloud.callFunction({
+      name: 'getResults',
+      data: {
+        id: this.data.id
+      }
+    }).then(res => {
+      this.setData({
+        list: res.result.data.achievementList
+      })
+    })
+  },
+  // 编辑学生成绩数据
+  edit() {
+    wx.cloud.callFunction({
+      name: 'editresults',
+      data: {
+        id: this.data.id,
+        achievementList: this.data.list
+      }
+    }).then(res => {
+      console.log('res', res)
+    })
   },
   addCourse(event) {
     this.setData({
@@ -43,29 +68,6 @@ Page({
     this.setData({
       list,
       course: ''
-    })
-  },
-  getData() {
-    wx.cloud.callFunction({
-      name: 'getResults',
-      data: {
-        id: this.data.id
-      }
-    }).then(res => {
-      this.setData({
-        list: res.result.data.achievementList
-      })
-    })
-  },
-  edit() {
-    wx.cloud.callFunction({
-      name: 'editresults',
-      data: {
-        id: this.data.id,
-        achievementList: this.data.list
-      }
-    }).then(res => {
-      console.log('res', res)
     })
   }
 })

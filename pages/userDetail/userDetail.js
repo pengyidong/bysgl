@@ -72,6 +72,7 @@ Page({
       url: '/pages/editUser/editUser',
     })
   },
+  // 个人信息详情数据
   getdata() {
     wx.cloud.callFunction({
       name: 'userDetail',
@@ -81,7 +82,6 @@ Page({
         id: this.data.id
       }
     }).then(res => {
-      console.log('res', res)
       let userDetail = this.data.info
       userDetail[0].value = res.result.data[0].name
       userDetail[1].value = res.result.data[0].instructor

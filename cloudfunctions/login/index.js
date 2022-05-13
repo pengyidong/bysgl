@@ -11,7 +11,7 @@ var db = cloud.database()
 //   }).get()
 // }
 
-// 云函数入口函数
+// 云函数入口函数 登录
 exports.main = async (event, context) => {
   return new Promise(async (resolve, reject) => {
     try {
@@ -20,6 +20,7 @@ exports.main = async (event, context) => {
         mobile: event.mobile,
         password: event.password
       }).get()
+      // 通过长度判断是否有数据
       let code = datas.data.length > 0 ? 200 : 201
       dataBack = {
         code: code,

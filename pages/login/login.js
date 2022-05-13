@@ -109,6 +109,7 @@ Page({
       radio: name,
     });
   },
+  // 注册
   register() {
     wx.cloud.callFunction({
       name: 'register',
@@ -121,16 +122,21 @@ Page({
         username: this.data.username
       }
     }).then(res => {
-      console.log('res', res)
       if (res.result.data.code == 200) {
         wx.showToast({
           title: res.result.data.msg,
           duration: 2000,
           icon: 'success'
         })
+        // 存储用户信息
         wx.setStorageSync('type', this.data.regRadio)
         wx.setStorageSync('mobile', this.data.RegMobile)
         wx.setStorageSync('id', this.data.id)
+        wx.showToast({
+          title: '注册成功',
+          duration: 2000
+        })
+        // 等两秒跳转
         setTimeout(() => {
           wx.reLaunch({
             url: '/pages/info/info',
@@ -145,6 +151,7 @@ Page({
       }
     })
   },
+  // 用户登录
   onSubmit() {
     wx.cloud.callFunction({
       name: 'login',
@@ -159,6 +166,7 @@ Page({
           title: '登录成功',
           duration: 2000
         })
+        // 存储用户信息
         wx.setStorageSync('type', this.data.loginRadio)
         wx.setStorageSync('mobile', res.mobile)
         wx.setStorageSync('id', res._id)

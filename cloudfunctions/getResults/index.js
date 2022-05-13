@@ -4,7 +4,7 @@ const cloud = require('wx-server-sdk')
 cloud.init()
 const db = cloud.database()
 
-// 云函数入口函数
+// 云函数入口函数 获取学生信息
 exports.main = async (event, context) => {
   return new Promise(async (resolve, reject) => {
     try {

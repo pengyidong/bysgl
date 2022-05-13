@@ -49,6 +49,7 @@ Page({
       })
     })
   },
+  // 编辑招聘信息
   edit() {
     let info = {
       name: this.data.name,
@@ -68,7 +69,6 @@ Page({
         id: this.data.id
       }
     }).then(res => {
-      
       if (res.result.stats.updated == 1) {
         wx.showToast({
           title: '更新成功',

@@ -57,6 +57,7 @@ Page({
     })
   },
   edit() {
+    // 获取用户输入的数据
     let userDetail = {
       name: this.data.name,
       instructor: this.data.instructor,
@@ -84,6 +85,7 @@ Page({
           title: '更新成功',
           duration: 2000,
         })
+        // 两秒后返回上一级页面
         setTimeout(() => {
           wx.navigateBack({
             delta: 1

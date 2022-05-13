@@ -50,11 +50,10 @@ exports.main = async (event, context) => {
         var result = await db.collection(event.name).add({
           data
         })
-        console.log('result', event.instructorID)
         if (result._id == undefined || result._id == "") {
           dataBack = {
             errCode: 201,
-            msg: "增加失败"
+            msg: "注册失败"
           }
         } else {
           if (event.name == 'students') {

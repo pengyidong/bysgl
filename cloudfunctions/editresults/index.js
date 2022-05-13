@@ -15,7 +15,6 @@ exports.main = async (event, context) => {
         }
       })
       dataBack = datas.data
-
       resolve({
         data: dataBack,
       })

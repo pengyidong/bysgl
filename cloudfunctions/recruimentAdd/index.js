@@ -5,6 +5,7 @@ var db = cloud.database()
 
 // 云函数入口函数
 exports.main = async (event, context) => {
+  // 添加招聘信息
   return db.collection('recruitment').add({
     data: event.info
   })

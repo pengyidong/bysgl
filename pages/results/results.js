@@ -23,11 +23,7 @@ Page({
   onShow() {
     this.getdata()
   },
-  edit() {
-    wx.navigateTo({
-      url: '/pages/editUser/editUser',
-    })
-  },
+  // 成绩查询
   getdata() {
     wx.cloud.callFunction({
       name: 'userDetail',
@@ -37,11 +33,15 @@ Page({
         id: this.data.id
       }
     }).then(res => {
-      console.log('res', res)
       let achievementList = res.result.data[0].achievementList
       this.setData({
         achievementList
       })
     })
-  }
+  },
+  edit() {
+    wx.navigateTo({
+      url: '/pages/editUser/editUser',
+    })
+  },
 })

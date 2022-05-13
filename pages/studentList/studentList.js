@@ -20,6 +20,7 @@ Page({
       url: `/pages/studentDetail/studentDetail?id=${event.target.dataset.id}`,
     })
   },
+  // 获取学生列表数据
   getdata() {
     wx.cloud.callFunction({
       name: 'studentList',
