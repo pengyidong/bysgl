@@ -168,8 +168,9 @@ Page({
         })
         // 存储用户信息
         wx.setStorageSync('type', this.data.loginRadio)
-        wx.setStorageSync('mobile', res.mobile)
-        wx.setStorageSync('id', res._id)
+        wx.setStorageSync('mobile', res.result.dataBack.data.mobile)
+        wx.setStorageSync('id',  res.result.dataBack.data.id)
+        console.log('res',res)
         setTimeout(() => {
           wx.reLaunch({
             url: '/pages/info/info',
