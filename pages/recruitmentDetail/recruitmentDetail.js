@@ -22,6 +22,9 @@ Page({
       type
     })
   },
+  onShow(){
+    this.getData(this.data.id)
+  },
   goto(){
     wx.navigateTo({
       url: `/pages/recruitmentEdit/recruitmentEdit?id=${this.data.id}`,
@@ -63,7 +66,6 @@ Page({
         id
       }
     }).then(res => {
-      console.log('res', res)
       this.setData({
         info: res.result.data
       })

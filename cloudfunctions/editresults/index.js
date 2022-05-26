@@ -14,7 +14,8 @@ exports.main = async (event, context) => {
           achievementList: event.achievementList
         }
       })
-      dataBack = datas.data
+      dataBack = datas
+      console.log('dataBack', datas)
       resolve({
         data: dataBack,
       })

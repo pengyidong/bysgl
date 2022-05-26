@@ -20,6 +20,14 @@ Page({
     })
     this.getData()
   },
+  del(event) {
+    let index = event.currentTarget.dataset.index
+    let list = this.data.list
+    list.splice(index, 1);
+    this.setData({
+      list
+    })
+  },
   // 获取学生成绩数据
   getData() {
     wx.cloud.callFunction({
@@ -42,7 +50,24 @@ Page({
         achievementList: this.data.list
       }
     }).then(res => {
-      console.log('res', res)
+      console.log(res)
+      if (res.result.data.stats.updated == 1) {
+        wx.showToast({
+          title: '更新成功',
+          duration: 2000,
+        })
+        setTimeout(() => {
+          wx.navigateBack({
+            delta: 1
+          })
+        }, 2000)
+      } else {
+        wx.showToast({
+          title: '更新失败',
+          duration: 2000,
+          icon: 'error'
+        })
+      }
     })
   },
   addCourse(event) {

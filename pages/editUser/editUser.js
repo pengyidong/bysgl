@@ -58,6 +58,7 @@ Page({
   },
   edit() {
     // 获取用户输入的数据
+    console.log(this.data)
     let userDetail = {
       name: this.data.name,
       instructor: this.data.instructor,
@@ -71,12 +72,13 @@ Page({
       companyCode: this.data.companyCode,
       address: this.data.address,
     }
+    console.log('userDetail', userDetail)
     wx.cloud.callFunction({
       name: 'userEdit',
       data: {
         type: this.data.type,
         mobile: this.data.mobile,
-        userDetail,
+        userDetail: userDetail,
         id: this.data.id
       }
     }).then(res => {
@@ -91,6 +93,12 @@ Page({
             delta: 1
           })
         }, 2000)
+      } else {
+        wx.showToast({
+          title: '更新失败',
+          duration: 2000,
+          icon: 'error'
+        })
       }
     })
   }

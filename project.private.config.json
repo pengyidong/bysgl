@@ -50,6 +50,20 @@
           "pathName": "pages/editResults/editResults",
           "query": "id=6f49505e6263c8f801d833ab056f3106",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/editUser/editUser",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/editResults/editResults",
+          "query": "id=6f49505e6263c8f801d833ab056f3106",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }
