@@ -131,7 +131,7 @@ Page({
         // 存储用户信息
         wx.setStorageSync('type', this.data.regRadio)
         wx.setStorageSync('mobile', this.data.RegMobile)
-        wx.setStorageSync('id', this.data.id)
+        wx.setStorageSync('id', res.result.data.id)
         wx.showToast({
           title: '注册成功',
           duration: 2000
