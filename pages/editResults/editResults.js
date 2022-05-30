@@ -22,7 +22,7 @@ Page({
   },
   del(event) {
     let index = event.currentTarget.dataset.index
-    let list = this.data.list
+    let list = this.data.list || []
     list.splice(index, 1);
     this.setData({
       list
@@ -37,7 +37,7 @@ Page({
       }
     }).then(res => {
       this.setData({
-        list: res.result.data.achievementList
+        list: res.result.data.achievementList || []
       })
     })
   },
@@ -47,7 +47,7 @@ Page({
       name: 'editresults',
       data: {
         id: this.data.id,
-        achievementList: this.data.list
+        achievementList: this.data.list || []
       }
     }).then(res => {
       console.log(res)
@@ -76,15 +76,14 @@ Page({
     })
   },
   getInput(event) {
-    console.log('event', event)
-    let list = this.data.list
+    let list = this.data.list || []
     list[event.currentTarget.dataset.index].achievement = event.detail
     this.setData({
       list
     })
   },
   add() {
-    let list = this.data.list
+    let list = this.data.list || []
     let obj = {
       achievement: "",
       course: this.data.course
